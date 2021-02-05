@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Write a Bash script that loops from 1 to 10: displays bad luck for the 4th loop iteration, good luck for the 8th, Holberton School for the other iterations
+
+x=1
+while [ $x -le 10 ]
+do
+	if [ "$x" == 4 ]
+	then
+	echo "bad luck"
+	elif [ "$x" == 8 ]
+	then
+	echo "good luck"
+	else
+	echo "Holberton School"
+	fi
+	x=$(( x + 1 ))
+done
