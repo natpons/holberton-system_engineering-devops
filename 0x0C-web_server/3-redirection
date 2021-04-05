@@ -10,7 +10,7 @@ sudo apt-get -y install nginx
 
 # NGinx Default public www location :
 # https://stackoverflow.com/questions/10674867/nginx-default-public-www-location
-echo "Holberton School" > /var/www/html/index.nginx-debian.html
+sudo echo "Holberton School" > /var/www/html/index.nginx-debian.html
 
 # listen : http://nginx.org/en/docs/http/request_processing.html
 # rewrite : http://nginx.org/en/docs/http/ngx_http_rewrite_module.html#rewrite
@@ -19,6 +19,6 @@ echo "Holberton School" > /var/www/html/index.nginx-debian.html
 # -i to edit files in-place instead of printing to standard output
 # new_string="line number 1\nline number 2\nline number 3"
 # sed -i "s/string_to_replace/$new_string/" file
-sudo sed -i "s/listen 80 default_server;/listen 80 default_server;\n	rewrite ^\/redirect_me https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4 permanent;/" /etc/nginx/sites-available/default
+sudo sed -i '/listen 80 default_server;/a rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' /etc/nginx/sites-available/default
 
 sudo service nginx restart
