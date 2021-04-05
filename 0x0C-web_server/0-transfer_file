@@ -1,7 +1,12 @@
 #!/usr/bin/env bash
-# Bash script that transfers a file from our client to a server
+# Bash script that transfers a file from our client to a server with 4 parameters:
+# $1 : the path to the file to be transferred
+# $2 : the IP of the server we want to transfer the file to
+# $3 : the username scp connects with
+# $4 : the path to the SSH private key that scp uses
 # -o : send the specified <ssh_option> to SSH in the ssh_config format
 # scp -i <private key> <local_file> sshacs@nsmediadocs.scp.upload.akamai.com:<remote path>
+# transfer for my server: ./0-transfer_file some_page.html 35.190.132.204 ubuntu ~/.ssh/holberton
 
 if [ $# -lt 3 ]
 then
