@@ -4,15 +4,16 @@
 # 2. When querying Nginx at its root / with a GET request (requesting a page) using curl, it must return a page that contains the string Holberton School
 
 # update my local package index so that I have access to the most recent package listings
-sudo apt-get -y update
-sudo apt-get -y install nginx
+apt-get -y update
+apt-get -y install nginx
 
 # the most restrictive profile because I havent configured SSL for my server, will allow traffic on port 80
-sudo ufw allow 'Nginx HTTP'
+#sudo ufw allow 'Nginx HTTP'
 
 # NGinx Default public www location :
 # https://stackoverflow.com/questions/10674867/nginx-default-public-www-location
 echo "Holberton School" > /var/www/html/index.nginx-debian.html
 
 # restarting nginx without systemctl
-sudo service restart nginx
+# sudo service restart nginx
+service nginx start
