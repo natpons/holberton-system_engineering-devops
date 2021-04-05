@@ -4,11 +4,9 @@
 # - answer file : bash script containing commands to automatically configure a Ubuntu machine to respect requirements
 
 # update my local package index so that I have access to the most recent package listings
-apt-get -y update
-apt-get -y install nginx
+sudo apt-get -y update
+sudo apt-get -y install nginx
 
-# the most restrictive profile because I havent configured SSL for my server, will allow traffic on port 80
-ufw allow 'Nginx HTTP'
 
 # NGinx Default public www location :
 # https://stackoverflow.com/questions/10674867/nginx-default-public-www-location
@@ -22,4 +20,4 @@ new_strs="/listen 80 default_server;/a rewrite ^/redirect_me https://www.youtube
 # -i to edit files in-place instead of printing to standard output
 sed -i "$new_strs"; /etc/nginx/sites-available/default
 
-service nginx start
+sudo service nginx restart
