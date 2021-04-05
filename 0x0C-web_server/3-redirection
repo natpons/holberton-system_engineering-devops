@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# Configure your Nginx server so that /redirect_me is redirecting to another page. Requirements:
+# - the redirection must be a 301 Moved Permanently
+# - answer file : bash script containing commands to automatically configure a Ubuntu machine to respect requirements
+
+# update my local package index so that I have access to the most recent package listings
+apt-get -y update
+apt-get -y install nginx
+
+# the most restrictive profile because I havent configured SSL for my server, will allow traffic on port 80
+ufw allow 'Nginx HTTP'
+
+# NGinx Default public www location :
+# https://stackoverflow.com/questions/10674867/nginx-default-public-www-location
+echo "Holberton School" > /var/www/html/index.nginx-debian.html
+
+# listen : http://nginx.org/en/docs/http/request_processing.html
+# rewrite : http://nginx.org/en/docs/http/ngx_http_rewrite_module.html#rewrite
+# https://www.journaldev.com/26864/nginx-rewrite-url-rules#nginx-rewrite-directive
+new_strs="/listen 80 default_server;/a rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;"
+
+# -i to edit files in-place instead of printing to standard output
+sed -i "$new_strs"; /etc/nginx/sites-available/default
+
+service nginx start
