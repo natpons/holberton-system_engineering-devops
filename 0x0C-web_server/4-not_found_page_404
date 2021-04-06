@@ -13,5 +13,5 @@ sudo touch /var/www/html/custom_404.html
 sudo echo "Ceci n'est pas une page" | sudo tee /var/www/html/custom_404.html
 sudo echo "<h1 style='color:red'>Error 404: Not found :-(</h1>" | sudo tee -a /var/www/html/custom_404.html
 
-sudo sed -i "s/listen 80 default_server;/listen 80 default_server;\n	error_page 404 \/404.html;\n	rewrite ^\/redirect_me https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4 permanent;/" /etc/nginx/sites-available/default
+sudo sed -i "s/listen 80 default_server;/listen 80 default_server;\n	error_page 404 \/custom_404.html;\n	rewrite ^\/redirect_me https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4 permanent;/" /etc/nginx/sites-available/default
 sudo service nginx restart
