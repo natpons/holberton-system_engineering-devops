@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# To configure web-02 to be identical to web-01 in the web-server project
+
+sudo apt-get -y update
+sudo apt-get -y install nginx
+sudo ufw allow "Nginx HTTP"
+
+sudo echo "Holberton School" | sudo tee /var/www/html/index.nginx-debian.html
+
+sudo touch /var/www/html/custom_404.html
+sudo echo "Ceci n'est pas une page" | sudo tee /var/www/html/custom_404.html
+sudo echo "<h1 style='color:red'>Error 404: Not found :-(</h1>" | sudo tee -a /var/www/html/custom_404.html
+
+sudo sed -i "s/listen 80 default_server;/listen 80 default_server;\n	error_page 404 \/custom_404.html;\n	rewrite ^\/redirect_me https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4 permanent;\n	add_header X-Served-By \"$HOSTNAME\";/" /etc/nginx/sites-available/default
+sudo service nginx restart
