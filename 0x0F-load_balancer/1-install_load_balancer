@@ -5,15 +5,13 @@ sudo apt-get -y update
 sudo apt-get -y install haproxy
 
 # default_backend : to forward requests to a pool of servers defined in a backend section
+# shares the traffic equally among two web servers by using the roundrobin algorithm
+
 sudo echo "
 frontend front
 bind *:80
 mode http
 default_backend back
- " | sudo tee /etc/haproxy/haproxy.cfg
-
-# shares the traffic equally among two web servers by using the roundrobin algorithm
-sudo echo "
 backend back
 balance roundrobin
 mode http
