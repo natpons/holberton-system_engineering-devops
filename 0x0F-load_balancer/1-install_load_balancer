@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# Install and configure HAproxy on your lb-01 server
+
+sudo apt-get -y update
+sudo apt-get -y install haproxy
+
+# default_backend : to forward requests to a pool of servers defined in a backend section
+sudo echo "
+frontend front
+bind *:80
+mode http
+default_backend back
+ " | sudo tee /etc/haproxy/haproxy.cfg
+
+# shares the traffic equally among two web servers by using the roundrobin algorithm
+sudo echo "
+backend back
+balance roundrobin
+mode http
+server 2503-web-01 35.190.132.204:80 check
+server 2503-web-02 34.75.103.223:80 check
+" | sudo tee /etc/haproxy/haproxy.cfg
+
+sudo service haproxy restart
