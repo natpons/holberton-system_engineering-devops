@@ -13,6 +13,7 @@ _For this project, students are expected to look at these concepts:_
 -   [DevOps](https://intranet.hbtn.io/concepts/124)
 -   [System Administration](https://intranet.hbtn.io/concepts/125)
 -   [Site Reliability Engineering](https://intranet.hbtn.io/concepts/126)
+-   [Sed replace](https://stackoverflow.com/questions/26041088/sed-replace-line-with-multiline-variable)
 
 ![](https://s3.amazonaws.com/intranet-projects-files/holbertonschool-sysadmin_devops/266/8Gu52Qv.png)
 
