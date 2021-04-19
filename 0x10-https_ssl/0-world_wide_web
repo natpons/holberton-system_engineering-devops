@@ -4,7 +4,7 @@
 f_dig ()
 {
 	a=$(dig "$2.$1" | grep -A1 'ANSWER SECTION:' | tail -n1)
-	echo "$2 $line" |
+	echo "$2 $a"|
 	awk '{print "The subdomain " $1 " is a " $5 " record and points to " $6 ""}'
 }
 
