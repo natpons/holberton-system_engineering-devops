@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Script that accepts one argument
+# Run the whoami command under the user passed as an argument
+# https://phoenixnap.com/kb/linux-sudo-command
+
+sudo -u "$1" whoami
