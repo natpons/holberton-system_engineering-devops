@@ -10,18 +10,18 @@ import requests
 from sys import argv
 
 if __name__ == "__main__":
-    user_id = argv[1]
+    userId = argv[1]
     # requests.get(url, params={key: value}, args)
     user = requests.get('https://jsonplaceholder.typicode.com/users/{}'.
-                        format(user_id)).json()
+                        format(userId)).json()
     # todo list for userId, format GET /comments?postId=1
-    todo = requests.get('https://jsonplaceholder.typicode.com/todos?user_id={}'
-                        .format(user_id)).json()
+    todo = requests.get('https://jsonplaceholder.typicode.com/todos?userId={}'
+                        .format(userId)).json()
 
-    with open("{}.csv".format(user_id), 'w') as csv_file:
+    with open("{}.csv".format(userId), 'w') as csv_file:
         # https://realpython.com/python-csv/
         employee_writer = csv.writer(csv_file, quoting=csv.QUOTE_ALL)
         for task in todo:
-            employee_writer.writerow([user_id, user.get('username'),
+            employee_writer.writerow([userId, user.get('username'),
                                       task.get('completed'),
                                       task.get('title')])
