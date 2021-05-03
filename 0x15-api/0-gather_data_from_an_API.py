@@ -8,13 +8,13 @@ import requests
 from sys import argv
 
 if __name__ == "__main__":
-    user_id = argv[1]
+    userId = argv[1]
     # requests.get(url, params={key: value}, args)
     user = requests.get('https://jsonplaceholder.typicode.com/users/{}'.
-                        format(user_id)).json()
+                        format(userId)).json()
     # format GET /comments?postId=1
-    todo = requests.get('https://jsonplaceholder.typicode.com/todos?user_id={}'
-                        .format(user_id)).json()
+    todo = requests.get('https://jsonplaceholder.typicode.com/todos?userId={}'
+                        .format(userId)).json()
     completed_tasks = []
 
     for task in todo:
